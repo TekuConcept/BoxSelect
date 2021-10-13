@@ -15,22 +15,6 @@ namespace CS_BoxSelect
         public Form1()
         {
             InitializeComponent();
-            canvas1.SetLog(textLog);
-        }
-
-        private void canvas1_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void canvas1_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void canvas1_MouseUp(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

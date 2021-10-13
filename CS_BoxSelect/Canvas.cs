@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CS_BoxSelect
@@ -13,19 +8,17 @@ namespace CS_BoxSelect
     
     public partial class Canvas : Control
     {
-        bool mouseDown;
-        Point startPoint;
-        Point endPoint;
+        private bool mouseDown;
+        private Point startPoint;
+        private Point endPoint;
 
-        List<Point> cube;
-        List<Point> hull;
+        private List<Point> cube;
+        private List<Point> hull;
 
-        Pen cubePen;
-        Pen hullPen;
-        Pen selectGood;
-        Pen selectBad;
-
-        RichTextBox log;
+        private Pen cubePen;
+        private Pen hullPen;
+        private Pen selectGood;
+        private Pen selectBad;
 
         public Canvas()
         {
@@ -59,11 +52,6 @@ namespace CS_BoxSelect
             selectBad  = new Pen(new SolidBrush(Color.Brown));
         }
 
-        public void SetLog(RichTextBox log)
-        {
-            this.log = log;
-        }
-
         private void Canvas_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
@@ -86,34 +74,6 @@ namespace CS_BoxSelect
 
         private bool IsSelected(Rectangle rect)
         {
-            //
-            // Separating Axis Theorem (SAT)
-            //
-
-            //bool result = false;
-
-            //Line top    = new Line(rect.Left,  rect.Top,    rect.Right, rect.Top);
-            //Line bottom = new Line(rect.Right, rect.Bottom, rect.Left,  rect.Bottom);
-            //Line left   = new Line(rect.Left,  rect.Bottom, rect.Left,  rect.Top);
-            //Line right  = new Line(rect.Right, rect.Top,    rect.Right, rect.Bottom);
-
-            //log.Clear();
-
-            //for (int i = 0; i < cube.Count; i++)
-            //{
-            //    float l1 = top.A    * cube[i].X + top.B    * cube[i].Y + top.C;
-            //    float l2 = bottom.A * cube[i].X + bottom.B * cube[i].Y + bottom.C;
-            //    float l3 = left.A   * cube[i].X + left.B   * cube[i].Y + left.C;
-            //    float l4 = right.A  * cube[i].X + right.B  * cube[i].Y + right.C;
-            //    result |= (l1 >= 0 && l2 >= 0 && l3 >= 0 && l4 >= 0);
-            //    log.Text += string.Format("Point {0}: {1}, {2}, {3}, {4}\n",
-            //        i,
-            //        l1 >= 0 ? 1 : 0,
-            //        l2 >= 0 ? 1 : 0,
-            //        l3 >= 0 ? 1 : 0,
-            //        l4 >= 0 ? 1 : 0);
-            //}
-
             List<Point> selection = new List<Point>()
             {
                 new Point(rect.Left, rect.Top),    new Point(rect.Right, rect.Top),
